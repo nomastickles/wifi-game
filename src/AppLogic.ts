@@ -45,16 +45,17 @@ export class AppLogic {
       const width = temp;
       const height = temp;
 
+      const updateKey = `${oui}${SSID}${power}${numBeacons}`;
       const labelText = `${oui}\n${SSID}\n${power}\n${numBeacons}`;
-      item.name = labelText;
+      item.updateKey = updateKey;
 
       const isUpdate = !!(
         previousItem &&
         previousBlock &&
-        previousItem?.name !== labelText
+        previousItem?.updateKey !== updateKey
       );
 
-      console.log("/////", previousItem?.name, labelText);
+      console.log("/////", previousItem?.updateKey, updateKey);
 
       // if (previousBlock && !isUpdate) {
       //   return;
@@ -116,7 +117,7 @@ export class AppLogic {
       let timeout = 500;
 
       setTimeout(() => {
-        if (isUpdate) {
+        if (previousBlock) {
           this.game.remove(previousBlock);
         }
 
