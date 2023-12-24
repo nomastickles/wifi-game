@@ -56,9 +56,9 @@ export class AppLogic {
 
       console.log("/////", previousItem?.name, labelText);
 
-      if (previousBlock && !isUpdate) {
-        return;
-      }
+      // if (previousBlock && !isUpdate) {
+      //   return;
+      // }
 
       const label = new ex.Label({
         text: labelText,
