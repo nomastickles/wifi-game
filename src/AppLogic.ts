@@ -55,11 +55,7 @@ export class AppLogic {
         y: 0,
       });
 
-      const isUpdate = !!(
-        previousItem &&
-        previousBlock &&
-        previousItem.name !== labelText
-      );
+      const isUpdate = !!(previousItem && previousBlock && false);
 
       let color = new ex.Color(
         random.integer(0, 255),
