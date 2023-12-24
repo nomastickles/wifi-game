@@ -47,16 +47,16 @@ export class AppLogic {
 
       switch (`${Math.abs(item.power)}`[0]) {
         case "1":
-          temp *= 1.5;
-          break;
-        case "2":
           temp *= 1.4;
           break;
-        case "3":
+        case "2":
           temp *= 1.3;
           break;
-        case "4":
+        case "3":
           temp *= 1.2;
+          break;
+        case "4":
+          temp *= 1.1;
           break;
         default:
       }
