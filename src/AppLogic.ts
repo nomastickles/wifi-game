@@ -54,6 +54,8 @@ export class AppLogic {
         previousItem.name !== labelText
       );
 
+      console.log("/////", previousItem.name, labelText);
+
       if (previousBlock && !isUpdate) {
         return;
       }
