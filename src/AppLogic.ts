@@ -57,8 +57,6 @@ export class AppLogic {
         previousItem?.updateKey !== updateKey
       );
 
-      console.log("/////", previousItem?.updateKey, updateKey);
-
       if (previousBlock && !isUpdate) {
         return;
       }
