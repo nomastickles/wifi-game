@@ -65,7 +65,7 @@ export class AppLogic {
       const height = temp;
       let rotation: number | undefined = undefined;
 
-      const updateKey = `${oui}${SSID}${power}${numBeacons}`;
+      const updateKey = `${oui}${SSID}${power}`;
       const labelText = `${oui}\n${SSID}\n${power}\n${numBeacons}`;
       item.updateKey = updateKey;
 
