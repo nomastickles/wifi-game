@@ -61,17 +61,12 @@ export class AppLogic {
         return;
       }
 
-      const label = new ex.Label({
-        text: labelText,
-        x: -width / 2 + width / 10,
-        y: 0,
-      });
-
-      let color = new ex.Color(
-        random.integer(0, 255),
-        random.integer(0, 255),
-        random.integer(0, 255)
-      );
+      const allColors = [
+        ...constants.COLORS_BLACK_TEXT,
+        ...constants.COLORS_WHITE_TEXT,
+      ];
+      const randomNewColor = allColors[random.integer(0, allColors.length - 1)];
+      let color = ex.Color.fromHex(randomNewColor);
 
       let pos = new ex.Vector(
         random.integer(
@@ -102,6 +97,15 @@ export class AppLogic {
         pos = previousBlock.pos;
         color = previousBlock.color;
       }
+
+      const label = new ex.Label({
+        text: labelText,
+        x: -width / 2 + width / 10,
+        y: 0,
+        color: constants.COLORS_WHITE_TEXT.includes(color.toHex())
+          ? ex.Color.White
+          : ex.Color.Black,
+      });
 
       const newBlock = new Block({
         name: labelText,

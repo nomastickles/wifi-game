@@ -14,6 +14,7 @@ const game = new ex.Engine({
   height,
   displayMode: ex.DisplayMode.FitScreenAndFill,
   fixedUpdateFps: 60,
+  backgroundColor: ex.Color.fromHex(constants.COLOR_BACKGROUND),
 });
 
 const matterSystem = new MatterJsSystem();
