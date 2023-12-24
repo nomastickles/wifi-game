@@ -64,7 +64,7 @@ export class AppLogic {
 
       let color = new ex.Color(
         random.integer(0, 255),
-        random.integer(0, 100),
+        random.integer(0, Math.abs(item.power)),
         random.integer(150, 200)
       );
 
