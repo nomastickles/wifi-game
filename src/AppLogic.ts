@@ -70,8 +70,8 @@ export class AppLogic {
 
       let color = new ex.Color(
         random.integer(0, 255),
-        random.integer(0, 75),
-        random.integer(150, 255)
+        random.integer(0, 100),
+        random.integer(150, 200)
       );
 
       let pos = new ex.Vector(
@@ -110,8 +110,8 @@ export class AppLogic {
         x: -width / 2 + width / 10,
         y: 0,
         color: constants.COLORS_WHITE_TEXT.includes(color.toHex())
-          ? ex.Color.Black
-          : ex.Color.White,
+          ? ex.Color.White
+          : ex.Color.Black,
       });
 
       const newBlock = new Block({
