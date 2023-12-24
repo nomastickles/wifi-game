@@ -85,52 +85,37 @@ export class AppLogic {
         random.integer(150, 200)
       );
 
-      let pos = new ex.Vector(
-        random.integer(
+      const box = {
+        l:
           this.game.getWorldBounds().width / 2 -
-            this.game.getWorldBounds().width / 3,
+          this.game.getWorldBounds().width / 3,
+        r:
           this.game.getWorldBounds().width / 2 +
-            this.game.getWorldBounds().width / 3
-        ),
-        random.integer(
+          this.game.getWorldBounds().width / 3,
+        t:
           this.game.getWorldBounds().height / 2 -
-            this.game.getWorldBounds().height / 3,
+          this.game.getWorldBounds().height / 3,
+        b:
           this.game.getWorldBounds().height / 2 +
-            this.game.getWorldBounds().height / 3
-        )
+          this.game.getWorldBounds().height / 3,
+      };
+
+      let pos = new ex.Vector(
+        random.integer(box.l, box.r),
+        random.integer(box.t, box.b)
       );
 
       switch (`${Math.abs(item.power)}`[0]) {
         case "1":
           pos = new ex.Vector(
-            random.integer(
-              this.game.getWorldBounds().width / 2 -
-                this.game.getWorldBounds().width / 3,
-              this.game.getWorldBounds().width / 2 +
-                this.game.getWorldBounds().width / 3
-            ),
-            random.integer(
-              this.game.getWorldBounds().height / 2 -
-                this.game.getWorldBounds().height / 3,
-              this.game.getWorldBounds().height / 2 +
-                this.game.getWorldBounds().height / 40
-            )
+            random.integer(box.l, box.r),
+            random.integer(box.t, box.t)
           );
           break;
         case "2":
           pos = new ex.Vector(
-            random.integer(
-              this.game.getWorldBounds().width / 2 -
-                this.game.getWorldBounds().width / 3,
-              this.game.getWorldBounds().width / 2 +
-                this.game.getWorldBounds().width / 3
-            ),
-            random.integer(
-              this.game.getWorldBounds().height / 2 -
-                this.game.getWorldBounds().height / 3,
-              this.game.getWorldBounds().height / 2 +
-                this.game.getWorldBounds().height / 4
-            )
+            random.integer(box.l, box.r),
+            random.integer(box.t, box.b)
           );
           break;
         default:
