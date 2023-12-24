@@ -98,7 +98,6 @@ export class AppLogic {
         color = previousBlock.color;
         rotation = previousBlock.rotation;
       }
-      console.log("color", color.toHex());
 
       const label = new ex.Label({
         text: labelText,

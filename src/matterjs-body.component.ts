@@ -18,6 +18,8 @@ export class MatterJsBodyComponent extends Component {
     super();
     this.label = labelIncoming;
     this.rotation = rotate;
+
+    console.log(" this.rotation", this.rotation);
   }
 
   onAdd(owner: Entity) {
