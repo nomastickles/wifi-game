@@ -65,7 +65,7 @@ export class AppLogic {
       let color = new ex.Color(
         random.integer(0, 255),
         random.integer(0, Math.abs(item.power)),
-        random.integer(150, 200)
+        random.integer(Math.abs(item.power), 200)
       );
 
       let pos = new ex.Vector(
