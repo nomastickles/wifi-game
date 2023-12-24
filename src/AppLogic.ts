@@ -61,13 +61,6 @@ export class AppLogic {
         return;
       }
 
-      const allColors = [
-        ...constants.COLORS_BLACK_TEXT,
-        ...constants.COLORS_WHITE_TEXT,
-      ];
-      const randomNewColor = allColors[random.integer(0, allColors.length - 1)];
-      // let color = ex.Color.fromHex(randomNewColor);
-
       let color = new ex.Color(
         random.integer(0, 255),
         random.integer(0, 100),
@@ -109,9 +102,7 @@ export class AppLogic {
         text: labelText,
         x: -width / 2 + width / 10,
         y: 0,
-        color: constants.COLORS_WHITE_TEXT.includes(color.toHex())
-          ? ex.Color.White
-          : ex.Color.Black,
+        color: ex.Color.fromHex(""),
       });
 
       const newBlock = new Block({
