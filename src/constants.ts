@@ -8,4 +8,4 @@ export const APPLY_GRAVITY_INTERVAL_MS = 100;
 export const TIME_SCALE = 0.1;
 
 export const COLOR_BACKGROUND = "#3A3A59";
-export const COLOR_TEXT = "#E6E3D3";
+export const COLOR_TEXT = "#c2bfad";
