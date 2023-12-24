@@ -77,11 +77,9 @@ export class AppLogic {
         ),
         random.integer(
           this.game.getWorldBounds().height / 2 -
-            this.game.getWorldBounds().height /
-              parseInt(`${Math.abs(item.power)}`[0]),
+            this.game.getWorldBounds().height / 3,
           this.game.getWorldBounds().height / 2 +
-            this.game.getWorldBounds().height /
-              parseInt(`${Math.abs(item.power)}`[0])
+            this.game.getWorldBounds().height / 3
         )
       );
 
