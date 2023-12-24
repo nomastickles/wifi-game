@@ -115,7 +115,7 @@ export class AppLogic {
         case "2":
           pos = new ex.Vector(
             random.integer(box.l, box.r),
-            random.integer(box.t, box.b)
+            random.integer(box.t, box.t * 3)
           );
           break;
         default:
