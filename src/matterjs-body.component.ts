@@ -33,7 +33,7 @@ export class MatterJsBodyComponent extends Component {
         {
           friction: 0.01,
           label: this.label,
-          // angle: this.rotation,
+          angle: this.rotation || 0,
         }
       );
     }
