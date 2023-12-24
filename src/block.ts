@@ -20,6 +20,7 @@ export class Block extends ex.Actor {
 
   setScale(scaleX: number, scaleY: number) {
     Matter.Body.scale(this.matterJs.matterJsBody, scaleX, scaleY);
+    Matter.Body.set(this.matterJs.matterJsBody, "width", this.width);
   }
 
   addStiffConstraint(pointA: ex.Vector, pointB: ex.Vector) {
@@ -39,9 +40,13 @@ export class Block extends ex.Actor {
     }
   }
 
-  removeEverything() {
-    this.removeConstraints();
-    this.kill();
+  removeEverything(game: ex.Engine, matterEngine: Matter.Engine) {
+    // Matter.clear(this.matterJs)
+    // Matter.Composite.remove(this.matterJs.matterJsBody);
+    // this.matterJs.matterJsBody.
+    // this.kill();
+    Matter.Composite.remove(matterEngine.world, this.matterJs.matterJsBody);
+    game.remove(this);
   }
 
   gravity(otherBody?: Matter.Body) {

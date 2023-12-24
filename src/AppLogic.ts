@@ -8,10 +8,12 @@ const random = new ex.Random(1337);
 
 export class AppLogic {
   game: ex.Engine;
+  matterEngine: Matter.Engine;
   items: WifiEntityCollection = {};
   blocksByItemId: Partial<Record<string, Block>> = {};
-  constructor(game: ex.Engine) {
+  constructor(game: ex.Engine, matter: Matter.Engine) {
     this.game = game;
+    this.matterEngine = matter;
     this.init();
   }
 
@@ -118,7 +120,7 @@ export class AppLogic {
 
       setTimeout(() => {
         if (isUpdate) {
-          this.game.remove(previousBlock);
+          previousBlock.removeEverything(this.game, this.matterEngine);
         }
 
         this.game.add(newBlock);

@@ -16,9 +16,11 @@ const game = new ex.Engine({
   fixedUpdateFps: 60,
 });
 
-createWalls(game);
+const matterSystem = new MatterJsSystem();
+const matterEngine = matterSystem.matterEngine;
+game.currentScene.world.systemManager.addSystem(matterSystem);
 
-game.currentScene.world.systemManager.addSystem(new MatterJsSystem());
+createWalls(game);
 
 game.on(constants.EVENT_ITEMS_FETCH, async () => {
   logger("EVENT_ITEMS_FETCH items fetched");
@@ -32,7 +34,7 @@ game.on(constants.EVENT_ITEMS_FETCH, async () => {
 
 game.on("initialize", async () => {
   logger("initialize");
-  new AppLogic(game);
+  new AppLogic(game, matterEngine);
 });
 
 game.start().then(() => {
