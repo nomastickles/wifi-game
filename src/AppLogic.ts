@@ -102,7 +102,7 @@ export class AppLogic {
         text: labelText,
         x: -width / 2 + width / 10,
         y: 0,
-        color: ex.Color.fromHex(""),
+        color: ex.Color.fromHex(constants.COLOR_TEXT),
       });
 
       const newBlock = new Block({
