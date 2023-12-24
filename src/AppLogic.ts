@@ -100,6 +100,25 @@ export class AppLogic {
         )
       );
 
+      switch (`${Math.abs(item.power)}`[0]) {
+        case "1":
+          pos = new ex.Vector(
+            random.integer(
+              this.game.getWorldBounds().width / 2 - 0,
+              this.game.getWorldBounds().width / 2 +
+                this.game.getWorldBounds().width / 3
+            ),
+            random.integer(
+              this.game.getWorldBounds().height / 2 -
+                this.game.getWorldBounds().height / 3,
+              this.game.getWorldBounds().height / 2 +
+                this.game.getWorldBounds().height / 3
+            )
+          );
+          break;
+        default:
+      }
+
       // if (isUpdate) {
       //   previousBlock.matterJs.width = temp / previousBlock.width;
       //   previousBlock.matterJs.height = temp / previousBlock.height;
