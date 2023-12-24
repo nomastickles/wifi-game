@@ -109,7 +109,7 @@ export class AppLogic {
         case "1":
           pos = new ex.Vector(
             random.integer(box.l, box.r),
-            random.integer(box.t, box.t / 2)
+            random.integer(box.t - 100, box.t / 2)
           );
           break;
         case "2":
