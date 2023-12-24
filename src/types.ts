@@ -5,6 +5,7 @@ export interface LogEntry {
 }
 
 export interface WifiEntity {
+  name?: string;
   macAddress: string;
   manufacturer?: string;
   /** either what the AP is broadcasting

@@ -47,6 +47,8 @@ export class AppLogic {
       const height = temp;
 
       const labelText = `${oui}\n${SSID}\n${power}\n${numBeacons}`;
+      item.name = labelText;
+
       const label = new ex.Label({
         text: labelText,
         x: -width / 2 + width / 10,
@@ -56,7 +58,7 @@ export class AppLogic {
       const isUpdate = !!(
         previousItem &&
         previousBlock &&
-        previousBlock.name !== labelText
+        previousItem.name !== labelText
       );
 
       let color = new ex.Color(
