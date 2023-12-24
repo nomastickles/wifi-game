@@ -153,9 +153,14 @@ export class AppLogic {
       const block = this.blocksByItemId[key];
       const item = this.items[key];
 
+      if (block?.name && block.name.includes("wall")) {
+        return;
+      }
+
       Object.keys(this.blocksByItemId).forEach((keyOther) => {
         const blockOther = this.blocksByItemId[keyOther];
         const itemOther = this.items[keyOther];
+        let inverseForce = false;
         if (block?.name === blockOther?.name) {
           return;
         }
@@ -165,7 +170,7 @@ export class AppLogic {
         }
 
         if (block?.name && block.name.includes("wall")) {
-          return;
+          inverseForce = true;
         }
 
         const temp = `${Math.abs(item.power)}`[0];
@@ -175,7 +180,7 @@ export class AppLogic {
         if (
           `${Math.abs(item.power)}`[0] === `${Math.abs(itemOther.power)}`[0]
         ) {
-          block?.gravity(blockOther?.matterJs?.matterJsBody);
+          block?.gravity(blockOther?.matterJs?.matterJsBody, inverseForce);
         }
       });
     });

@@ -50,11 +50,11 @@ export class Block extends ex.Actor {
     game.remove(this);
   }
 
-  gravity(otherBody?: Matter.Body) {
+  gravity(otherBody?: Matter.Body, inverse = false) {
     if (!otherBody) {
       return;
     }
-    gravityApply(this.matterJs.matterJsBody, otherBody);
+    gravityApply(this.matterJs.matterJsBody, otherBody, inverse);
   }
 }
 
