@@ -41,9 +41,9 @@ game.on("initialize", async () => {
 game.start().then(() => {
   game.emit(constants.EVENT_ITEMS_FETCH);
 
-  setInterval(() => {
-    game.emit(constants.EVENT_ITEMS_GRAVITY);
-  }, constants.APPLY_GRAVITY_INTERVAL_MS);
+  // setInterval(() => {
+  //   game.emit(constants.EVENT_ITEMS_GRAVITY);
+  // }, constants.APPLY_GRAVITY_INTERVAL_MS);
 
   setInterval(() => {
     game.emit(constants.EVENT_ITEMS_FETCH);
