@@ -41,7 +41,6 @@ export class AppLogic {
       const previousBlock = this.blocksByItemId[macAddress];
 
       const newThreshold = Math.min(this.game.getWorldBounds().width / 10, 150);
-      // const threshold = 150;
       const temp = power + newThreshold;
       const width = temp;
       const height = temp;
@@ -49,13 +48,21 @@ export class AppLogic {
       const labelText = `${oui}\n${SSID}\n${power}\n${numBeacons}`;
       item.name = labelText;
 
+      const isUpdate = !!(
+        previousItem &&
+        previousBlock &&
+        previousItem.name !== labelText
+      );
+
+      if (previousBlock && !isUpdate) {
+        return;
+      }
+
       const label = new ex.Label({
         text: labelText,
         x: -width / 2 + width / 10,
         y: 0,
       });
-
-      const isUpdate = !!(previousItem && previousBlock && false);
 
       let color = new ex.Color(
         random.integer(0, 255),
