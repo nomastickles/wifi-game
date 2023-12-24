@@ -20,10 +20,10 @@ function convertToEntity(
       return;
     }
 
-    const now = new Date();
-    if (diffMinutes(lastSeen, now) > 2) {
-      return;
-    }
+    // const now = new Date();
+    // if (diffMinutes(lastSeen, now) > 2) {
+    //   return;
+    // }
 
     const ssid = (isClient ? incoming[" BSSID"] : incoming[" ESSID"]).trim();
     const data: WifiEntity = {
