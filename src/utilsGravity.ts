@@ -3,6 +3,8 @@ import * as Matter from "matter-js";
 const gravityConstant = 0.1;
 
 export function gravityApply(bodyA: Matter.Body, bodyB: Matter.Body) {
+  return;
+
   var bToA = Matter.Vector.sub(bodyB.position, bodyA.position),
     distanceSq = Matter.Vector.magnitudeSquared(bToA) || 0.0001,
     normal = Matter.Vector.normalise(bToA),
