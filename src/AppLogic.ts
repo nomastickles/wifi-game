@@ -70,15 +70,15 @@ export class AppLogic {
 
       let pos = new ex.Vector(
         random.integer(
-          this.game.getWorldBounds().width / 4 -
+          this.game.getWorldBounds().width / 2 -
             this.game.getWorldBounds().width / 8,
-          this.game.getWorldBounds().width / 4 +
+          this.game.getWorldBounds().width / 2 +
             this.game.getWorldBounds().width / 8
         ),
         random.integer(
-          this.game.getWorldBounds().height / 4 -
+          this.game.getWorldBounds().height / 2 -
             this.game.getWorldBounds().height / 8,
-          this.game.getWorldBounds().height / 4 +
+          this.game.getWorldBounds().height / 2 +
             this.game.getWorldBounds().height / 8
         )
       );
