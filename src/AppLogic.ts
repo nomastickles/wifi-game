@@ -104,7 +104,8 @@ export class AppLogic {
         case "1":
           pos = new ex.Vector(
             random.integer(
-              this.game.getWorldBounds().width / 2 - 0,
+              this.game.getWorldBounds().width / 2 -
+                this.game.getWorldBounds().width / 3,
               this.game.getWorldBounds().width / 2 +
                 this.game.getWorldBounds().width / 3
             ),
@@ -112,7 +113,23 @@ export class AppLogic {
               this.game.getWorldBounds().height / 2 -
                 this.game.getWorldBounds().height / 3,
               this.game.getWorldBounds().height / 2 +
-                this.game.getWorldBounds().height / 3
+                this.game.getWorldBounds().height / 40
+            )
+          );
+          break;
+        case "2":
+          pos = new ex.Vector(
+            random.integer(
+              this.game.getWorldBounds().width / 2 -
+                this.game.getWorldBounds().width / 3,
+              this.game.getWorldBounds().width / 2 +
+                this.game.getWorldBounds().width / 3
+            ),
+            random.integer(
+              this.game.getWorldBounds().height / 2 -
+                this.game.getWorldBounds().height / 3,
+              this.game.getWorldBounds().height / 2 +
+                this.game.getWorldBounds().height / 4
             )
           );
           break;
