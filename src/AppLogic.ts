@@ -88,8 +88,7 @@ export class AppLogic {
       let pos = new ex.Vector(
         random.integer(
           this.game.getWorldBounds().width / 2 -
-            this.game.getWorldBounds().width /
-              (3 - parseInt(`${Math.abs(item.power)}`[0])),
+            this.game.getWorldBounds().width / 3,
           this.game.getWorldBounds().width / 2 +
             this.game.getWorldBounds().width / 3
         ),
