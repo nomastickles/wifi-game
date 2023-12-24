@@ -6,15 +6,18 @@ export class MatterJsBodyComponent extends Component {
   public readonly type = "matterjs.component" as const;
   matterJsBody!: Matter.Body;
   label: string;
+  rotation?: number;
 
   constructor(
     public width: number,
     public height: number,
     public isStatic = false,
-    public labelIncoming = ""
+    public labelIncoming = "",
+    public rotate?: number
   ) {
     super();
     this.label = labelIncoming;
+    this.rotation = rotate;
   }
 
   onAdd(owner: Entity) {
@@ -28,6 +31,7 @@ export class MatterJsBodyComponent extends Component {
         {
           friction: 0.01,
           label: this.label,
+          angle: this.rotation,
         }
       );
     }

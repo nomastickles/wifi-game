@@ -13,7 +13,8 @@ export class Block extends ex.Actor {
       this.width,
       this.height,
       config.collisionType === ex.CollisionType.Active,
-      this.name
+      this.name,
+      config.rotation
     );
     this.addComponent(this.matterJs);
   }

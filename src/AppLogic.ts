@@ -46,6 +46,7 @@ export class AppLogic {
       const temp = power + newThreshold;
       const width = temp;
       const height = temp;
+      let rotation: number | undefined = undefined;
 
       const updateKey = `${oui}${SSID}${power}${numBeacons}`;
       const labelText = `${oui}\n${SSID}\n${power}\n${numBeacons}`;
@@ -95,6 +96,7 @@ export class AppLogic {
       if (isUpdate) {
         pos = previousBlock.pos;
         color = previousBlock.color;
+        rotation = previousBlock.rotation;
       }
       console.log("color", color.toHex());
 
@@ -107,6 +109,7 @@ export class AppLogic {
 
       const newBlock = new Block({
         name: labelText,
+        rotation,
         pos,
         width,
         height,
