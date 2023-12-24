@@ -66,7 +66,13 @@ export class AppLogic {
         ...constants.COLORS_WHITE_TEXT,
       ];
       const randomNewColor = allColors[random.integer(0, allColors.length - 1)];
-      let color = ex.Color.fromHex(randomNewColor);
+      // let color = ex.Color.fromHex(randomNewColor);
+
+      let color = new ex.Color(
+        random.integer(0, 255),
+        random.integer(0, 255),
+        random.integer(150, 255)
+      );
 
       let pos = new ex.Vector(
         random.integer(
