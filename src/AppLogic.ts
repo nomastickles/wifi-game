@@ -91,8 +91,8 @@ export class AppLogic {
       // }
 
       if (isUpdate) {
-        pos = previousBlock?.pos;
-        color = previousBlock?.color;
+        pos = previousBlock.pos;
+        color = previousBlock.color;
       }
 
       const newBlock = new Block({
@@ -110,10 +110,7 @@ export class AppLogic {
 
       setTimeout(() => {
         if (isUpdate) {
-          previousBlock.children.forEach((c) => {
-            c.kill();
-          });
-          previousBlock.kill();
+          this.game.remove(previousBlock);
         }
 
         this.game.add(newBlock);
