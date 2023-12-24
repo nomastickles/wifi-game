@@ -57,9 +57,9 @@ export class AppLogic {
 
       console.log("/////", previousItem?.updateKey, updateKey);
 
-      // if (previousBlock && !isUpdate) {
-      //   return;
-      // }
+      if (previousBlock && !isUpdate) {
+        return;
+      }
 
       const label = new ex.Label({
         text: labelText,
@@ -117,7 +117,7 @@ export class AppLogic {
       let timeout = 500;
 
       setTimeout(() => {
-        if (previousBlock) {
+        if (isUpdate) {
           this.game.remove(previousBlock);
         }
 
