@@ -6,6 +6,7 @@ export const FETCH_ITEMS_INTERVAL_MS = 1000 * 5;
 export const APPLY_GRAVITY_INTERVAL_MS = 100;
 
 export const TIME_SCALE = 1;
+export const GRAVITY_CONSTANT = 2;
 
 export const COLOR_BACKGROUND = "#3A3A59";
 export const COLOR_TEXT = "#d3d0bd";

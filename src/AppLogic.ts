@@ -168,6 +168,10 @@ export class AppLogic {
           return;
         }
 
+        const temp = `${Math.abs(item.power)}`[0];
+        const temp2 = `${Math.abs(itemOther.power)}`[0];
+        console.log("temp", temp, temp2);
+
         if (
           `${Math.abs(item.power)}`[0] === `${Math.abs(itemOther.power)}`[0]
         ) {
