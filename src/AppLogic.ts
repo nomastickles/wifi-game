@@ -97,6 +97,7 @@ export class AppLogic {
         pos = previousBlock.pos;
         color = previousBlock.color;
       }
+      console.log("color", color.toHex());
 
       const label = new ex.Label({
         text: labelText,
