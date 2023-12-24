@@ -149,8 +149,17 @@ export class AppLogic {
   }
 
   handleGravity() {
-    Object.values(this.blocksByItemId).forEach((block) => {
-      Object.values(this.blocksByItemId).forEach((blockOther) => {
+    Object.keys(this.blocksByItemId).forEach((key) => {
+      const block = this.blocksByItemId[key];
+      const item = this.items[key];
+
+      Object.keys(this.blocksByItemId).forEach((keyOther) => {
+        const blockOther = this.blocksByItemId[keyOther];
+        const itemOther = this.items[keyOther];
+        if (block?.name === blockOther?.name) {
+          return;
+        }
+
         if (block?.name === blockOther?.name) {
           return;
         }
@@ -158,7 +167,12 @@ export class AppLogic {
         if (block?.name && block.name.includes("wall")) {
           return;
         }
-        block?.gravity(blockOther?.matterJs?.matterJsBody);
+
+        if (
+          `${Math.abs(item.power)}`[0] === `${Math.abs(itemOther.power)}`[0]
+        ) {
+          block?.gravity(blockOther?.matterJs?.matterJsBody);
+        }
       });
     });
   }
