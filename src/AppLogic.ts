@@ -51,10 +51,10 @@ export class AppLogic {
       const isUpdate = !!(
         previousItem &&
         previousBlock &&
-        previousItem.name !== labelText
+        previousItem?.name !== labelText
       );
 
-      console.log("/////", previousItem.name, labelText);
+      console.log("/////", previousItem?.name, labelText);
 
       if (previousBlock && !isUpdate) {
         return;
