@@ -131,6 +131,10 @@ export class AppLogic {
           );
           break;
         default:
+          pos = new ex.Vector(
+            random.integer(box.l, box.r),
+            random.integer(box.t / 2, box.b)
+          );
       }
 
       // if (isUpdate) {
