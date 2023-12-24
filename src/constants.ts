@@ -5,7 +5,7 @@ export const EVENT_ITEMS_GRAVITY = "EVENT_ITEMS_GRAVITY";
 export const FETCH_ITEMS_INTERVAL_MS = 1000 * 10;
 export const APPLY_GRAVITY_INTERVAL_MS = 100;
 
-export const TIME_SCALE = 0.08;
+export const TIME_SCALE = 0.008;
 
 export const COLOR_BACKGROUND = "#3A3A59";
 export const COLOR_TEXT = "#d3d0bd";
