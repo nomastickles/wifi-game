@@ -13,7 +13,7 @@ export class MatterJsSystem extends ex.System<
 
   matterEngine: Matter.Engine = Matter.Engine.create({
     timing: {
-      timeScale: 0.2,
+      timeScale: constants.TIME_SCALE,
     },
     gravity: {
       x: 0,
