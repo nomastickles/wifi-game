@@ -92,7 +92,9 @@ export class AppLogic {
         r:
           this.game.getWorldBounds().width / 2 +
           this.game.getWorldBounds().width / 3,
-        t: this.game.getWorldBounds().height / 2,
+        t:
+          this.game.getWorldBounds().height / 2 -
+          this.game.getWorldBounds().height / 3,
         b:
           this.game.getWorldBounds().height / 2 +
           this.game.getWorldBounds().height / 3,
