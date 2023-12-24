@@ -43,7 +43,24 @@ export class AppLogic {
       const previousBlock = this.blocksByItemId[macAddress];
 
       const newThreshold = Math.min(this.game.getWorldBounds().width / 10, 150);
-      const temp = power + newThreshold;
+      let temp = power + newThreshold;
+
+      switch (`${Math.abs(item.power)}`[0]) {
+        case "1":
+          temp *= 1.5;
+          break;
+        case "2":
+          temp *= 1.4;
+          break;
+        case "3":
+          temp *= 1.3;
+          break;
+        case "4":
+          temp *= 1.2;
+          break;
+        default:
+      }
+
       const width = temp;
       const height = temp;
       let rotation: number | undefined = undefined;
@@ -65,7 +82,7 @@ export class AppLogic {
       let color = new ex.Color(
         random.integer(0, 255),
         random.integer(0, Math.abs(item.power)),
-        random.integer(Math.abs(item.power), 200)
+        random.integer(150, 200)
       );
 
       let pos = new ex.Vector(
