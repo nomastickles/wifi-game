@@ -11,7 +11,7 @@ export function createWalls(game: Engine) {
     width,
     height: 10,
     color: Color.Black,
-    collisionType: CollisionType.Fixed,
+    collisionType: CollisionType.Active,
   });
 
   game.add(wall1);
@@ -22,7 +22,7 @@ export function createWalls(game: Engine) {
     width,
     height: 10,
     color: Color.Black,
-    collisionType: CollisionType.Fixed,
+    collisionType: CollisionType.Active,
   });
 
   game.add(wall2);
@@ -33,7 +33,7 @@ export function createWalls(game: Engine) {
     width: 10,
     height,
     color: Color.Black,
-    collisionType: CollisionType.Fixed,
+    collisionType: CollisionType.Active,
   });
 
   game.add(wall3);
@@ -44,7 +44,7 @@ export function createWalls(game: Engine) {
     width: 10,
     height,
     color: Color.Black,
-    collisionType: CollisionType.Fixed,
+    collisionType: CollisionType.Active,
   });
 
   game.add(wall4);
