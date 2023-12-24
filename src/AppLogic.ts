@@ -70,7 +70,7 @@ export class AppLogic {
 
       let color = new ex.Color(
         random.integer(0, 255),
-        random.integer(0, 100),
+        random.integer(0, 75),
         random.integer(150, 255)
       );
 
@@ -110,8 +110,8 @@ export class AppLogic {
         x: -width / 2 + width / 10,
         y: 0,
         color: constants.COLORS_WHITE_TEXT.includes(color.toHex())
-          ? ex.Color.White
-          : ex.Color.Black,
+          ? ex.Color.Black
+          : ex.Color.White,
       });
 
       const newBlock = new Block({
