@@ -45,4 +45,6 @@ game.start().then(() => {
   setInterval(() => {
     game.emit(constants.EVENT_ITEMS_FETCH);
   }, constants.FETCH_ITEMS_INTERVAL_MS);
+
+  // game.remove(game.currentScene);
 });

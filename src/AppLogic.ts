@@ -36,11 +36,9 @@ export class AppLogic {
         .replace(/:/g, "-");
       const oui = (ouiJson as Record<string, string>)[macAddressPrefix];
 
-      const name = macAddress;
+      // const name = macAddress;
       const previousItem = this.items[macAddress];
       const previousBlock = this.blocksByItemId[macAddress];
-
-      const isUpdate = !!(previousItem && previousBlock);
 
       const newThreshold = Math.min(this.game.getWorldBounds().width / 10, 150);
       // const threshold = 150;
@@ -48,31 +46,26 @@ export class AppLogic {
       const width = temp;
       const height = temp;
 
+      const labelText = `${oui}\n${SSID}\n${power}\n${numBeacons}`;
       const label = new ex.Label({
-        text: `${oui}\n${SSID}\n${power}\n${numBeacons}`,
+        text: labelText,
         x: -width / 2 + width / 10,
         y: 0,
       });
 
-      // if (previousBlock) {
-      //   previousBlock.matterJs.width = temp / previousBlock.width;
-      //   previousBlock.matterJs.height = temp / previousBlock.height;
-      //   // previousBlock.setWidth(temp / previousBlock.width);
-      //   previousBlock.setScale(
-      //     temp / previousBlock.width,
-      //     temp / previousBlock.height
-      //   );
-      // }
+      const isUpdate = !!(
+        previousItem &&
+        previousBlock &&
+        previousBlock.name !== labelText
+      );
 
-      let color = !isUpdate
-        ? new ex.Color(
-            random.integer(0, 255),
-            random.integer(0, 255),
-            random.integer(0, 255)
-          )
-        : previousBlock?.color;
+      let color = new ex.Color(
+        random.integer(0, 255),
+        random.integer(0, 255),
+        random.integer(0, 255)
+      );
 
-      const pos = new ex.Vector(
+      let pos = new ex.Vector(
         random.integer(
           this.game.getWorldBounds().width / 2 -
             this.game.getWorldBounds().width / 4,
@@ -87,8 +80,23 @@ export class AppLogic {
         )
       );
 
+      // if (isUpdate) {
+      //   previousBlock.matterJs.width = temp / previousBlock.width;
+      //   previousBlock.matterJs.height = temp / previousBlock.height;
+      //   // previousBlock.setWidth(temp / previousBlock.width);
+      //   previousBlock.setScale(
+      //     temp / previousBlock.width,
+      //     temp / previousBlock.height
+      //   );
+      // }
+
+      if (isUpdate) {
+        pos = previousBlock?.pos;
+        color = previousBlock?.color;
+      }
+
       const newBlock = new Block({
-        name,
+        name: labelText,
         pos,
         width,
         height,
