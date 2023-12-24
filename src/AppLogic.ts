@@ -121,19 +121,19 @@ export class AppLogic {
         case "3":
           pos = new ex.Vector(
             random.integer(box.l, box.r),
-            random.integer(box.t / 0.8, this.game.getWorldBounds().height / 1.3)
+            random.integer(box.t, this.game.getWorldBounds().height / 1.3)
           );
           break;
         case "4":
           pos = new ex.Vector(
             random.integer(box.l, box.r),
-            random.integer(box.t / 0.5, this.game.getWorldBounds().height / 1.2)
+            random.integer(box.t, this.game.getWorldBounds().height / 1.2)
           );
           break;
         default:
           pos = new ex.Vector(
             random.integer(box.l, box.r),
-            random.integer(box.t / 0.4, box.b)
+            random.integer(this.game.getWorldBounds().height / 4, box.b)
           );
       }
 
