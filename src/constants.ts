@@ -13,4 +13,4 @@ export const GRAVITY_CONSTANT = 4;
 export const GRAVITY_DISTANCE_THRESHOLD = 200;
 export const GRAVITY_WALL_MASS = 100;
 
-export const MATTER_FRICTION = 1;
+export const MATTER_FRICTION = 0.01;

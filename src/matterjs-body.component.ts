@@ -30,7 +30,7 @@ export class MatterJsBodyComponent extends Component {
         this.height,
         {
           isStatic: this.isStatic,
-          friction: constants.MATTER_FRICTION,
+          frictionAir: constants.MATTER_FRICTION,
           label: this.label,
           angle: this.rotation || 0,
         }
