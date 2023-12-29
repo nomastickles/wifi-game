@@ -4,7 +4,8 @@ import { Block } from "./Block";
 const width = window.innerWidth - 5;
 const height = window.innerHeight - 5;
 
-export function createWalls(game: Engine) {
+export function createWalls() {
+  const results = [];
   const wall1 = new Block({
     name: "wall1",
     pos: vec(width / 2, 0),
@@ -15,7 +16,7 @@ export function createWalls(game: Engine) {
     collisionType: CollisionType.Active,
   });
 
-  game.add(wall1);
+  results.push(wall1);
 
   const wall2 = new Block({
     name: "wall2",
@@ -27,7 +28,7 @@ export function createWalls(game: Engine) {
     collisionType: CollisionType.Active,
   });
 
-  game.add(wall2);
+  results.push(wall2);
 
   const wall3 = new Block({
     name: "wall3",
@@ -39,7 +40,7 @@ export function createWalls(game: Engine) {
     collisionType: CollisionType.Active,
   });
 
-  game.add(wall3);
+  results.push(wall3);
 
   const wall4 = new Block({
     name: "wall4",
@@ -51,5 +52,7 @@ export function createWalls(game: Engine) {
     collisionType: CollisionType.Active,
   });
 
-  game.add(wall4);
+  results.push(wall4);
+
+  return results;
 }

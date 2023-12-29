@@ -24,6 +24,11 @@ export class Block extends ex.Actor {
     Matter.Body.set(this.matterJs.matterJsBody, "width", this.width);
   }
 
+  setMass(mass: number) {
+    this.matterJs.matterJsBody.mass = mass;
+    this.matterJs.matterJsBody.inverseMass = 1 / mass;
+  }
+
   addStiffConstraint(pointA: ex.Vector, pointB: ex.Vector) {
     this.addComponent(
       new MatterJsConstraintComponent({
@@ -42,19 +47,16 @@ export class Block extends ex.Actor {
   }
 
   removeEverything(game: ex.Engine, matterEngine: Matter.Engine) {
-    // Matter.clear(this.matterJs)
-    // Matter.Composite.remove(this.matterJs.matterJsBody);
-    // this.matterJs.matterJsBody.
-    // this.kill();
     Matter.Composite.remove(matterEngine.world, this.matterJs.matterJsBody);
     game.remove(this);
+    this.kill();
   }
 
-  gravity(otherBody?: Matter.Body, inverse = false) {
+  gravity(otherBody?: Matter.Body) {
     if (!otherBody) {
       return;
     }
-    gravityApply(this.matterJs.matterJsBody, otherBody, inverse);
+    gravityApply(this.matterJs.matterJsBody, otherBody);
   }
 }
 

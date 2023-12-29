@@ -4,7 +4,6 @@ import * as constants from "./constants";
 import { MatterJsSystem } from "./matterjs.system";
 import { fetchData } from "./utilsData";
 import { logger } from "./utilsLogger";
-import { createWalls } from "./utilsWalls";
 
 const width = window.innerWidth - 10;
 const height = window.innerHeight - 10;
@@ -20,8 +19,6 @@ const game = new ex.Engine({
 const matterSystem = new MatterJsSystem();
 const matterEngine = matterSystem.matterEngine;
 game.currentScene.world.systemManager.addSystem(matterSystem);
-
-createWalls(game);
 
 game.on(constants.EVENT_ITEMS_FETCH, async () => {
   logger("EVENT_ITEMS_FETCH items fetched");
@@ -48,6 +45,4 @@ game.start().then(() => {
   setInterval(() => {
     game.emit(constants.EVENT_ITEMS_FETCH);
   }, constants.FETCH_ITEMS_INTERVAL_MS);
-
-  // game.remove(game.currentScene);
 });

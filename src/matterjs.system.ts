@@ -76,7 +76,9 @@ export class MatterJsSystem extends ex.System<
 
       transform.pos.x = matterJsComponent.matterJsBody.position.x;
       transform.pos.y = matterJsComponent.matterJsBody.position.y;
-      transform.rotation = matterJsComponent.matterJsBody.angle;
+      // transform.rotation = matterJsComponent.matterJsBody.angle;
+      // keeping rotation at 0 for now; easier to read
+      transform.rotation = 0;
     }
   }
 }

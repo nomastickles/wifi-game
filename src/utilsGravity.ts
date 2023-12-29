@@ -1,10 +1,11 @@
 import * as Matter from "matter-js";
-import { GRAVITY_CONSTANT } from "./constants";
+import { GRAVITY_CONSTANT, GRAVITY_DISTANCE_THRESHOLD } from "./constants";
 
 export function gravityApply(
   bodyA: Matter.Body,
   bodyB: Matter.Body,
-  inverse = false
+  inverse = false,
+  distanceThreshold = GRAVITY_DISTANCE_THRESHOLD
 ) {
   var bToA = Matter.Vector.sub(bodyB.position, bodyA.position),
     distanceSq = Matter.Vector.magnitudeSquared(bToA) || 0.0001,
@@ -12,8 +13,11 @@ export function gravityApply(
     magnitude = -GRAVITY_CONSTANT * ((bodyA.mass * bodyB.mass) / distanceSq),
     force = Matter.Vector.mult(normal, magnitude);
 
+  if (Matter.Vector.magnitude(bToA) < distanceThreshold) {
+    return;
+  }
+
   if (!inverse) {
-    // to apply forces to both bodies
     Matter.Body.applyForce(bodyA, bodyA.position, Matter.Vector.neg(force));
     Matter.Body.applyForce(bodyB, bodyB.position, force);
     return;

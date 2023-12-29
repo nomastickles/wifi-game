@@ -1,5 +1,5 @@
 import { Component, Entity, TransformComponent } from "excalibur";
-
+import * as constants from "./constants";
 import * as Matter from "matter-js";
 
 export class MatterJsBodyComponent extends Component {
@@ -18,8 +18,6 @@ export class MatterJsBodyComponent extends Component {
     super();
     this.label = labelIncoming;
     this.rotation = rotate;
-
-    console.log(" this.rotation", this.rotation);
   }
 
   onAdd(owner: Entity) {
@@ -31,7 +29,8 @@ export class MatterJsBodyComponent extends Component {
         this.width,
         this.height,
         {
-          friction: 0.01,
+          isStatic: this.isStatic,
+          friction: constants.MATTER_FRICTION,
           label: this.label,
           angle: this.rotation || 0,
         }

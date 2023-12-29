@@ -3,6 +3,7 @@ import { WifiEntity, WifiEntityCollection } from "./types";
 import * as constants from "./constants";
 import { Block } from "./Block";
 import ouiJson from "./oui.json";
+import { createWalls } from "./utilsWalls";
 
 const random = new ex.Random(1337);
 
@@ -11,6 +12,9 @@ export class AppLogic {
   matterEngine: Matter.Engine;
   items: WifiEntityCollection = {};
   blocksByItemId: Partial<Record<string, Block>> = {};
+  labelsByItemId: Partial<Record<string, ex.Label>> = {};
+  walls: Block[] = [];
+
   constructor(game: ex.Engine, matter: Matter.Engine) {
     this.game = game;
     this.matterEngine = matter;
@@ -18,6 +22,12 @@ export class AppLogic {
   }
 
   async init() {
+    createWalls().forEach((wall) => {
+      wall.setMass(constants.GRAVITY_WALL_MASS);
+      this.walls.push(wall);
+      this.game.add(wall);
+    });
+
     this.game.on(constants.EVENT_ITEMS_INCOMING, (data) =>
       this.handleIncoming(data)
     );
@@ -133,16 +143,6 @@ export class AppLogic {
         default:
       }
 
-      // if (isUpdate) {
-      //   previousBlock.matterJs.width = temp / previousBlock.width;
-      //   previousBlock.matterJs.height = temp / previousBlock.height;
-      //   // previousBlock.setWidth(temp / previousBlock.width);
-      //   previousBlock.setScale(
-      //     temp / previousBlock.width,
-      //     temp / previousBlock.height
-      //   );
-      // }
-
       if (isUpdate) {
         pos = previousBlock.pos;
         color = previousBlock.color;
@@ -155,6 +155,8 @@ export class AppLogic {
         y: 0,
         color: ex.Color.fromHex(constants.COLOR_TEXT),
       });
+
+      this.labelsByItemId[macAddress] = label;
 
       const newBlock = new Block({
         name: labelText,
@@ -199,38 +201,29 @@ export class AppLogic {
   }
 
   handleGravity() {
-    Object.keys(this.blocksByItemId).forEach((key) => {
-      const block = this.blocksByItemId[key];
-      const item = this.items[key];
+    this.walls.forEach((wall) => {
+      Object.keys(this.blocksByItemId).forEach((id) => {
+        const block = this.blocksByItemId[id];
+        const itemOther = this.items[id];
+        const firstPowerDigit = parseInt(`${Math.abs(itemOther.power)}`[0]);
 
-      if (block?.name && block.name.includes("wall")) {
-        return;
-      }
-
-      Object.keys(this.blocksByItemId).forEach((keyOther) => {
-        const blockOther = this.blocksByItemId[keyOther];
-        const itemOther = this.items[keyOther];
-        let inverseForce = false;
-        if (block?.name === blockOther?.name) {
+        if (wall.name === "wall1" && [1, 2, 3].includes(firstPowerDigit)) {
+          block?.gravity(wall.matterJs.matterJsBody);
           return;
         }
 
-        if (block?.name === blockOther?.name) {
+        if (wall.name === "wall4" && [4, 5].includes(firstPowerDigit)) {
+          block?.gravity(wall.matterJs.matterJsBody);
+          return;
+        }
+        if (wall.name === "wall3" && [5, 6].includes(firstPowerDigit)) {
+          block?.gravity(wall.matterJs.matterJsBody);
           return;
         }
 
-        if (block?.name && block.name.includes("wall")) {
-          inverseForce = true;
-        }
-
-        const temp = `${Math.abs(item.power)}`[0];
-        const temp2 = `${Math.abs(itemOther.power)}`[0];
-        console.log("temp", temp, temp2);
-
-        if (
-          `${Math.abs(item.power)}`[0] === `${Math.abs(itemOther.power)}`[0]
-        ) {
-          block?.gravity(blockOther?.matterJs?.matterJsBody, inverseForce);
+        if (wall.name === "wall2" && firstPowerDigit > 6) {
+          block?.gravity(wall.matterJs.matterJsBody);
+          return;
         }
       });
     });
